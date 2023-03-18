@@ -16,6 +16,8 @@
   "dependencies": {
     "@tiptap/pm": "*",
     "@tiptap/starter-kit": "*",
-    "@tiptap/vue-2": "*"
+    "@tiptap/vue-2": "*",
+    "sass": "^1.59.3",
+    "sass-loader": "^10.4.1"
   }
 }
