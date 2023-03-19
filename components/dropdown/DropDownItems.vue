@@ -3,7 +3,7 @@ import { ref, provide, Ref } from "vue";
 import { injectionKey } from "./injectionKey";
 
 type Props = {
-  dropdownRef: Ref<HTMLDivElement>;
+  dropdownRef: HTMLDivElement;
 };
 
 defineProps<Props>();
@@ -51,7 +51,7 @@ provide(injectionKey, {
 });
 </script>
 <template>
-  <div :ref="dropdownRef" @keydown="handleKeyDown">
+  <div ref="dropdownRef" @keydown="handleKeyDown">
     <slot />
   </div>
 </template>

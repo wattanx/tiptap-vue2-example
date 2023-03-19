@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import remixiconUrl from "remixicon/fonts/remixicon.symbol.svg";
 import { ref, watch } from "vue";
+import DropDownItems from "./DropDownItems.vue";
 const dropDownRef = ref<HTMLDivElement>();
 const buttonRef = ref<HTMLButtonElement>();
 const showDropDown = ref<boolean>(false);
@@ -25,3 +27,17 @@ watch([dropDownRef, buttonRef, showDropDown], () => {
   }
 });
 </script>
+<template>
+  <div>
+    <button @click="showDropDown = !showDropDown" ref="buttonRef">
+      <svg class="remix">
+        <use :xlink:href="`${remixiconUrl}#ri-arrow-down-s-line`" />
+      </svg>
+    </button>
+    <portal to="dropdown" v-show="showDropDown">
+      <DropDownItems :dropdownRef="dropDownRef" @close="handleClose">
+        <slot />
+      </DropDownItems>
+    </portal>
+  </div>
+</template>

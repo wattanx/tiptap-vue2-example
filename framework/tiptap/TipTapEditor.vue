@@ -14,6 +14,7 @@ const editor = useEditor({
 </script>
 <template>
   <div class="editor" v-if="editor">
+    <portal-target name="dropdown"></portal-target>
     <MenuBar class="editor__header" :editor="editor" />
     <EditorContent class="editor__content" :editor="editor" />
   </div>

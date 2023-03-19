@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["portal-vue/nuxt"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

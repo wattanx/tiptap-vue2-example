@@ -61,7 +61,7 @@ export function hex2rgb(hex: string): RGB {
   };
 }
 
-function rgb2hsv({ r, g, b }: RGB): HSV {
+export function rgb2hsv({ r, g, b }: RGB): HSV {
   r /= 255;
   g /= 255;
   b /= 255;
@@ -82,7 +82,7 @@ function rgb2hsv({ r, g, b }: RGB): HSV {
   return { h, s, v };
 }
 
-function hsv2rgb({ h, s, v }: HSV): RGB {
+export function hsv2rgb({ h, s, v }: HSV): RGB {
   s /= 100;
   v /= 100;
 
@@ -100,11 +100,11 @@ function hsv2rgb({ h, s, v }: HSV): RGB {
   return { b, g, r };
 }
 
-function rgb2hex({ b, g, r }: RGB): string {
+export function rgb2hex({ b, g, r }: RGB): string {
   return "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
 }
 
-function transformColor<M extends keyof Color, C extends Color[M]>(
+export function transformColor<M extends keyof Color, C extends Color[M]>(
   format: M,
   color: C
 ): Color {
