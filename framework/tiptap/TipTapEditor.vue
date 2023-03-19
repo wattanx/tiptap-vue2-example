@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { Editor, EditorContent } from '@tiptap/vue-2';
-import StarterKit from '@tiptap/starter-kit';
-import { useEditor } from './useEditor';
+import { EditorContent } from "@tiptap/vue-2";
+import StarterKit from "@tiptap/starter-kit";
+import Highlight from "@tiptap/extension-highlight";
+import TaskItem from "@tiptap/extension-task-item";
+import TaskList from "@tiptap/extension-task-list";
+import { useEditor } from "./useEditor";
+import MenuBar from "./MenuBar.vue";
 
 const editor = useEditor({
-  content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
-  extensions: [StarterKit],
+  content: "<p>I’m running Tiptap with Vue.js. 🎉</p>",
+  extensions: [StarterKit, Highlight, TaskItem, TaskList],
 });
 </script>
 <template>
   <div class="editor" v-if="editor">
+    <MenuBar class="editor__header" :editor="editor" />
     <EditorContent class="editor__content" :editor="editor" />
   </div>
 </template>
@@ -17,11 +22,13 @@ const editor = useEditor({
 .editor {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   max-height: 26rem;
   color: #0d0d0d;
   background-color: #fff;
   border: 3px solid #0d0d0d;
   border-radius: 0.75rem;
+  max-width: 700px;
   &__header {
     display: flex;
     align-items: center;
@@ -57,7 +64,7 @@ const editor = useEditor({
     align-items: center;
     border-radius: 5px;
     &::before {
-      content: ' ';
+      content: " ";
       flex: 0 0 auto;
       display: inline-block;
       width: 0.5rem;
@@ -144,7 +151,7 @@ const editor = useEditor({
   pre {
     background: #0d0d0d;
     color: #fff;
-    font-family: 'JetBrainsMono', monospace;
+    font-family: "JetBrainsMono", monospace;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     code {
@@ -173,7 +180,7 @@ const editor = useEditor({
     border-top: 2px solid rgba(#0d0d0d, 0.1);
     margin: 2rem 0;
   }
-  ul[data-type='taskList'] {
+  ul[data-type="taskList"] {
     list-style: none;
     padding: 0;
     li {
